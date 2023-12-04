@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import controlador.Consultas;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "AgregarProducto", urlPatterns = {"/agregarProducto"})
 public class AgregarProducto extends HttpServlet {
@@ -44,10 +38,10 @@ public class AgregarProducto extends HttpServlet {
         Consultas sql = new Consultas();
 
         float price = Float.parseFloat(precio);
-        int tam2=stock.lastIndexOf(stock);
-        if(stock.charAt(tam2)=='.'){
+        int tam2 = stock.lastIndexOf(stock);
+        if (stock.charAt(tam2) == '.') {
             String newId = stock.substring(0, stock.length() - 1);
-            stock=newId;
+            stock = newId;
         }
         int cantidad = Integer.parseInt(stock);
 
@@ -100,5 +94,4 @@ public class AgregarProducto extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

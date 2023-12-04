@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import controlador.Conexion;
@@ -12,9 +7,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author koine
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-public class ModeloProducto extends Conexion{
+public class ModeloProducto extends Conexion {
 
     public ArrayList<Producto> getAllProductos() {
         ArrayList<Producto> productos = new ArrayList<>();
@@ -25,7 +21,7 @@ public class ModeloProducto extends Conexion{
             pst = getConexion().prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
-                productos.add(new Producto(rs.getInt("id_producto"), rs.getString("nombre"), rs.getString("img_producto"), rs.getString("tipo"),rs.getFloat("precio"), rs.getInt("stock")));
+                productos.add(new Producto(rs.getInt("id_producto"), rs.getString("nombre"), rs.getString("img_producto"), rs.getString("tipo"), rs.getFloat("precio"), rs.getInt("stock")));
             }
         } catch (Exception e) {
 
@@ -40,13 +36,13 @@ public class ModeloProducto extends Conexion{
                 if (getConexion() != null) {
                     getConexion().close();
                 }
-            } catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
         return productos;
     }
-    
+
     public ArrayList<Producto> get3Productos() {
         ArrayList<Producto> productos = new ArrayList<>();
         PreparedStatement pst = null;
@@ -56,7 +52,7 @@ public class ModeloProducto extends Conexion{
             pst = getConexion().prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
-                productos.add(new Producto(rs.getInt("id_producto"), rs.getString("nombre"), rs.getString("img_producto"), rs.getString("tipo"),rs.getFloat("precio"), rs.getInt("stock")));
+                productos.add(new Producto(rs.getInt("id_producto"), rs.getString("nombre"), rs.getString("img_producto"), rs.getString("tipo"), rs.getFloat("precio"), rs.getInt("stock")));
             }
         } catch (Exception e) {
 
@@ -71,14 +67,14 @@ public class ModeloProducto extends Conexion{
                 if (getConexion() != null) {
                     getConexion().close();
                 }
-            } catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
         return productos;
     }
-    
-    public Producto getProducto(int id){
+
+    public Producto getProducto(int id) {
         Producto producto = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -89,11 +85,11 @@ public class ModeloProducto extends Conexion{
             pst.setInt(1, id);
             rs = pst.executeQuery();
             while (rs.next()) {
-                producto = new Producto(rs.getInt("id_producto"), rs.getString("nombre"), rs.getString("img_producto"), rs.getString("tipo"),rs.getFloat("precio"), rs.getInt("stock"));
+                producto = new Producto(rs.getInt("id_producto"), rs.getString("nombre"), rs.getString("img_producto"), rs.getString("tipo"), rs.getFloat("precio"), rs.getInt("stock"));
             }
-        }catch (Exception e){
-            
-        }finally{
+        } catch (Exception e) {
+
+        } finally {
             try {
                 if (rs != null) {
                     rs.close();
@@ -104,7 +100,7 @@ public class ModeloProducto extends Conexion{
                 if (getConexion() != null) {
                     getConexion().close();
                 }
-            } catch(Exception e){     
+            } catch (Exception e) {
             }
         }
         return producto;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 import controlador.Conexion;
@@ -12,10 +7,11 @@ import java.util.ArrayList;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-public class ModeloUsuario extends Conexion{
-    
+public class ModeloUsuario extends Conexion {
+
     public ArrayList<Usuario> getAllUsuarios() {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         PreparedStatement pst = null;
@@ -41,11 +37,10 @@ public class ModeloUsuario extends Conexion{
                 if (getConexion() != null) {
                     getConexion().close();
                 }
-            } catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
         return usuarios;
     }
-    
 }

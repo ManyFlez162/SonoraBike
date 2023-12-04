@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +11,8 @@ import modelo.Articulo;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "EliminarArticulo", urlPatterns = {"/eliminarArticulo"})
 public class EliminarArticulo extends HttpServlet {
@@ -89,5 +84,4 @@ public class EliminarArticulo extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

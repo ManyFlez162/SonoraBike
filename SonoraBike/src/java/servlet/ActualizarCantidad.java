@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
-import controlador.Consultas;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +12,8 @@ import modelo.ControladorProducto;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "ActualizarCantidad", urlPatterns = {"/actualizarCantidad"})
 public class ActualizarCantidad extends HttpServlet {
@@ -44,12 +38,12 @@ public class ActualizarCantidad extends HttpServlet {
         ArrayList<Articulo> articulos = (ArrayList<Articulo>) request.getSession().getAttribute("carrito");
         for (int i = 0; i < articulos.size(); i++) {
             if (articulos.get(i).getIdProducto() == id) {
-                ControladorProducto cp=new ControladorProducto();
-                int stock=cp.getProducto(id).getStock();
-                if(cantidad<=stock){
+                ControladorProducto cp = new ControladorProducto();
+                int stock = cp.getProducto(id).getStock();
+                if (cantidad <= stock) {
                     articulos.get(i).setCantidad(cantidad);
                 }
-                if(cantidad==0){
+                if (cantidad == 0) {
                     articulos.remove(i);
                 }
             }
@@ -100,5 +94,4 @@ public class ActualizarCantidad extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

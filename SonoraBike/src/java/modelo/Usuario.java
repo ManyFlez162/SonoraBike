@@ -1,15 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 public class Usuario {
+
     int id_usuario;
     String nombre;
     String pass;
@@ -39,18 +36,16 @@ public class Usuario {
         this.telefono = telefono;
     }
 
-    
-    
-    public void agregarDireccion(String calle, String colonia, String ciudad, String estado, String pais, int codigo_postal, String numero_casa){
-        this.calle=calle;
-        this.ciudad=ciudad;
-        this.colonia=colonia;
-        this.estado=estado;
-        this.pais=pais;
-        this.codigo_postal=codigo_postal;
-        this.numero_casa=numero_casa;
+    public void agregarDireccion(String calle, String colonia, String ciudad, String estado, String pais, int codigo_postal, String numero_casa) {
+        this.calle = calle;
+        this.ciudad = ciudad;
+        this.colonia = colonia;
+        this.estado = estado;
+        this.pais = pais;
+        this.codigo_postal = codigo_postal;
+        this.numero_casa = numero_casa;
     }
-    
+
     public int getId_usuario() {
         return id_usuario;
     }
@@ -154,6 +149,4 @@ public class Usuario {
     public void setNumero_casa(String numero_casa) {
         this.numero_casa = numero_casa;
     }
-    
-    
 }

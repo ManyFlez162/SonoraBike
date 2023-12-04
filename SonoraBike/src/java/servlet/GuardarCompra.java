@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import controlador.Consultas;
@@ -18,7 +13,8 @@ import modelo.Articulo;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "GuardarCompra", urlPatterns = {"/guardarCompra"})
 public class GuardarCompra extends HttpServlet {
@@ -38,11 +34,11 @@ public class GuardarCompra extends HttpServlet {
         HttpSession sesion = request.getSession(false);
         ArrayList<Articulo> articulos = (ArrayList<Articulo>) sesion.getAttribute("carrito");
 
-        if(articulos==null || articulos.isEmpty()){
+        if (articulos == null || articulos.isEmpty()) {
             request.getSession().setAttribute("mensaje", "No hay productos en el carrito");
             request.getSession().removeAttribute("carrito");
             response.sendRedirect("index2.jsp");
-        }else{
+        } else {
             String subtotal = request.getParameter("total");
             float total = Float.parseFloat(subtotal);
             String correo = request.getParameter("correo");  // Utiliza getParameter para obtener valores del formulario
@@ -62,7 +58,7 @@ public class GuardarCompra extends HttpServlet {
                 }
             }
 
-    // Después del bucle, verifica si hubo errores y realiza la redirección si es necesario
+            // Después del bucle, verifica si hubo errores y realiza la redirección si es necesario
             if (!mensajesError.isEmpty()) {
                 request.getSession().setAttribute("mensaje", "No se pudo realizar la compra");
                 request.getSession().removeAttribute("carrito");
@@ -74,7 +70,7 @@ public class GuardarCompra extends HttpServlet {
                 response.sendRedirect("index2.jsp");
             }
         }
-            
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -115,5 +111,4 @@ public class GuardarCompra extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

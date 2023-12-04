@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import controlador.Consultas;
@@ -17,7 +12,8 @@ import modelo.Usuario;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "ActualizarAdministrador", urlPatterns = {"/actualizarAdministrador"})
 public class ActualizarAdministrador extends HttpServlet {
@@ -42,7 +38,6 @@ public class ActualizarAdministrador extends HttpServlet {
         String nuevoTelefono = request.getParameter("telefono");
 
         // Obtén más parámetros según sea necesario
-
         // Utiliza la clase Consultas para actualizar la información del usuario
         Consultas sql = new Consultas();
         Usuario usuario = new Usuario(nuevoNombre, nuevaPass, nuevoTelefono);
@@ -93,5 +88,4 @@ public class ActualizarAdministrador extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

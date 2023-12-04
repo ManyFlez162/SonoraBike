@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import controlador.Consultas;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +11,8 @@ import modelo.Producto;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "ActualizarProducto", urlPatterns = {"/actualizarProducto"})
 public class ActualizarProducto extends HttpServlet {
@@ -35,7 +30,7 @@ public class ActualizarProducto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String id=request.getParameter("idProducto");
+        String id = request.getParameter("idProducto");
         String nombreProducto = request.getParameter("nombreProducto");
         String img = request.getParameter("img");
         String precio = request.getParameter("precio");
@@ -44,22 +39,22 @@ public class ActualizarProducto extends HttpServlet {
 
         Consultas sql = new Consultas();
 
-        int tam=id.lastIndexOf(id);
-        if(id.charAt(tam)=='.'){
+        int tam = id.lastIndexOf(id);
+        if (id.charAt(tam) == '.') {
             String newId = id.substring(0, id.length() - 1);
-            id=newId;
+            id = newId;
         }
-        int id_producto=Integer.parseInt(id);
+        int id_producto = Integer.parseInt(id);
         float price = Float.parseFloat(precio);
-        
-        int tam2=stock.lastIndexOf(stock);
-        if(stock.charAt(tam2)=='.'){
+
+        int tam2 = stock.lastIndexOf(stock);
+        if (stock.charAt(tam2) == '.') {
             String newId = stock.substring(0, stock.length() - 1);
-            stock=newId;
+            stock = newId;
         }
         int cantidad = Integer.parseInt(stock);
-        
-        Producto producto=new Producto(id_producto, nombreProducto, img, tipo, price, cantidad);
+
+        Producto producto = new Producto(id_producto, nombreProducto, img, tipo, price, cantidad);
 
         if (sql.actualizarProducto(producto)) {
             // Almacena el mensaje en la sesión
@@ -110,5 +105,4 @@ public class ActualizarProducto extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

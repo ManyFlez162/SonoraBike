@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import controlador.Consultas;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +11,8 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author koine
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "InicioSesion", urlPatterns = {"/iniciarSesion"})
 public class InicioSesion extends HttpServlet {
@@ -34,24 +29,28 @@ public class InicioSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
         String correo = request.getParameter("correo");
         String clave = request.getParameter("pass");
 
         Consultas sql = new Consultas();
 
-        int res=sql.autenticacion(correo, clave);
-        if (res==1) {
-            HttpSession objSesion = request.getSession(true);
-            objSesion.setAttribute("correo", correo);
-            response.sendRedirect("index2.jsp");
-        } else if(res==2){
-            HttpSession objSesion = request.getSession(true);
-            objSesion.setAttribute("correo", correo);
-            response.sendRedirect("administracion.jsp");
-        } else{
-            response.sendRedirect("index.jsp");
+        int res = sql.autenticacion(correo, clave);
+        switch (res) {
+            case 1: {
+                HttpSession objSesion = request.getSession(true);
+                objSesion.setAttribute("correo", correo);
+                response.sendRedirect("index2.jsp");
+                break;
+            }
+            case 2: {
+                HttpSession objSesion = request.getSession(true);
+                objSesion.setAttribute("correo", correo);
+                response.sendRedirect("administracion.jsp");
+                break;
+            }
+            default:
+                response.sendRedirect("index.jsp");
+                break;
         }
 
     }
@@ -94,5 +93,4 @@ public class InicioSesion extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

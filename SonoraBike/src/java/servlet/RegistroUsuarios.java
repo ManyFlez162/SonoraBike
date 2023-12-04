@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import controlador.Consultas;
@@ -16,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author koine
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "RegistroUsuarios", urlPatterns = {"/nuevoUsuario"})
 public class RegistroUsuarios extends HttpServlet {
@@ -34,35 +30,40 @@ public class RegistroUsuarios extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
-        String nombre=request.getParameter("nombre");
-        String clave=request.getParameter("pass");
-        String correo=request.getParameter("correo");
-        String telefono=request.getParameter("telefono");
-        String calle=request.getParameter("calle");
-        String colonia=request.getParameter("colonia");
-        String ciudad=request.getParameter("ciudad");
-        String estado=request.getParameter("estado");
-        String pais=request.getParameter("pais");
-        String codigoP=request.getParameter("codigo_postal");
-        String numeroCasa=request.getParameter("numero_casa");
-        Consultas sql= new Consultas();
-        
-        Integer cp = Integer.parseInt(codigoP);
-        int res=sql.registrar(nombre, clave, correo, telefono, calle, colonia, ciudad, estado, pais, cp, numeroCasa);
-        
-        if(res==1){
-            request.getSession().setAttribute("mensajeRegistro", "Registro exitoso");
-            response.sendRedirect("index.jsp");
-        }else if(res==0){
-            request.getSession().setAttribute("mensajeRegistro", "No se pudo registrar");
-            response.sendRedirect("registro.jsp");
-        }else if(res==-1){
-            request.getSession().setAttribute("mensajeRegistro", "Ya hay un usuario registrado con ese correo");
-            response.sendRedirect("registro.jsp");
+
+        String nombre = request.getParameter("nombre");
+        String clave = request.getParameter("pass");
+        String correo = request.getParameter("correo");
+        String telefono = request.getParameter("telefono");
+        String calle = request.getParameter("calle");
+        String colonia = request.getParameter("colonia");
+        String ciudad = request.getParameter("ciudad");
+        String estado = request.getParameter("estado");
+        String pais = request.getParameter("pais");
+        String codigoP = request.getParameter("codigo_postal");
+        String numeroCasa = request.getParameter("numero_casa");
+        Consultas sql = new Consultas();
+
+        Integer cp = Integer.valueOf(codigoP);
+        int res = sql.registrar(nombre, clave, correo, telefono, calle, colonia, ciudad, estado, pais, cp, numeroCasa);
+
+        switch (res) {
+            case 1:
+                request.getSession().setAttribute("mensajeRegistro", "Registro exitoso");
+                response.sendRedirect("index.jsp");
+                break;
+            case 0:
+                request.getSession().setAttribute("mensajeRegistro", "No se pudo registrar");
+                response.sendRedirect("registro.jsp");
+                break;
+            case -1:
+                request.getSession().setAttribute("mensajeRegistro", "Ya hay un usuario registrado con ese correo");
+                response.sendRedirect("registro.jsp");
+                break;
+            default:
+                break;
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -103,5 +104,4 @@ public class RegistroUsuarios extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

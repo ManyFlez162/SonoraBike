@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import controlador.Consultas;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "EliminarUsuario", urlPatterns = {"/eliminarUsuario"})
 public class EliminarUsuario extends HttpServlet {
@@ -33,17 +28,17 @@ public class EliminarUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String idUsuario=request.getParameter("idUsuario");
-        int tam=idUsuario.lastIndexOf(idUsuario);
-        if(idUsuario.charAt(tam)=='.'){
+
+        String idUsuario = request.getParameter("idUsuario");
+        int tam = idUsuario.lastIndexOf(idUsuario);
+        if (idUsuario.charAt(tam) == '.') {
             String newId = idUsuario.substring(0, idUsuario.length() - 1);
-            idUsuario=newId;
+            idUsuario = newId;
         }
-        int id_usuario=Integer.parseInt(idUsuario);
-        
-        Consultas sql=new Consultas();
-        
+        int id_usuario = Integer.parseInt(idUsuario);
+
+        Consultas sql = new Consultas();
+
         if (sql.eliminarUsuario(id_usuario)) {
             // Almacena el mensaje en la sesión
             request.getSession().setAttribute("mensaje", "Usuario eliminado correctamente");
@@ -93,5 +88,4 @@ public class EliminarUsuario extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

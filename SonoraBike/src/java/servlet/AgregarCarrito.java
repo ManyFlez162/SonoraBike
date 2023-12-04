@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +13,8 @@ import modelo.ControladorProducto;
 
 /**
  *
- * @author kingu
+ * @author Brandon Figueroa Ugalde - 00000233295
+ * @author Manuel Francisco Flores Velazquez - 00000233301
  */
 @WebServlet(name = "AgregarCarrito", urlPatterns = {"/agregarCarrito"})
 public class AgregarCarrito extends HttpServlet {
@@ -38,7 +33,7 @@ public class AgregarCarrito extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            
+
             String cantidadString = request.getParameter("cantidad");
             String idProductoString = request.getParameter("idProducto");
 
@@ -73,7 +68,7 @@ public class AgregarCarrito extends HttpServlet {
                     if (cantidad > stock) {
                         cantidad = stock;
                     }
-                    if(stock!=0){
+                    if (stock != 0) {
                         articulos.add(new Articulo(idProducto, cantidad));
                     }
                 }
@@ -130,5 +125,4 @@ public class AgregarCarrito extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

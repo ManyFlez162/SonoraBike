@@ -453,57 +453,6 @@ header .navbar {
     color: #000000;
 }
 
-/*.product-item {
-        border: 1px solid #eee;
-        margin-bottom: 30px;
-}
-
-.product-item .down-content {
-        padding: 30px;
-        position: relative;
-}
-
-.product-item img {
-        width: 100%;
-        overflow: hidden;
-}
-
-.product-item .down-content h4 {
-        font-size: 17px;
-        color: #1a6692;
-        margin-bottom: 20px;
-}
-
-.product-item .down-content h6 {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        font-size: 18px;
-        color: #121212;
-}
-
-.product-item .down-content p {
-        margin-bottom: 20px;
-}
-
-.product-item .down-content ul li {
-        display: inline-block;
-}
-
-.product-item .down-content ul li i {
-        color: #F1A9CE;
-        font-size: 14px;
-}
-
-.product-item .down-content span {
-        position: absolute;
-        right: 30px;
-        bottom: 30px;
-        font-size: 13px;
-        color: #F1A9CE;
-        font-weight: 500;
-}*/
-
 /* Best Features */
 
 .about-features {
@@ -582,10 +531,6 @@ header .navbar {
     margin-top: 20px;
 }
 
-
-
-
-
 /* Call To Action */
 
 .call-to-action .inner-content {
@@ -614,9 +559,6 @@ header .navbar {
     margin-top: 12px;
 }
 
-
-
-
 /* Footer */
 
 footer {
@@ -637,9 +579,6 @@ footer .inner-content p a {
     color: #000000;
     margin-left: 3px;
 }
-
-
-
 
 /* Product Page */
 
@@ -698,8 +637,6 @@ footer .inner-content p a {
     border-color: #bdc3c7;
     color: #fff;
 }
-
-
 
 /* Team Members */
 
@@ -771,9 +708,6 @@ footer .inner-content p a {
     margin-bottom: 20px;
 }
 
-
-
-
 /* Services */
 
 .services {
@@ -820,9 +754,6 @@ footer .inner-content p a {
     margin-bottom: 25px;
 }
 
-
-
-
 /* Clients */
 
 .happy-clients {
@@ -840,9 +771,6 @@ footer .inner-content p a {
 .happy-clients .client-item img:hover {
     opacity: 0.8;
 }
-
-
-
 
 /* Find Us */
 
@@ -865,8 +793,6 @@ footer .inner-content p a {
 .find-us .left-content {
     margin-left: 30px;
 }
-
-
 
 /* Send Message */
 
@@ -1121,17 +1047,6 @@ footer .inner-content p a {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
-}
-/*
-.w3-modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #7DA9CC;
-    color: #fff;
-    padding: 20px;
-    border-radius: 5px;
 }
 
 /* Estilo para el botón "Iniciar Sesión" */

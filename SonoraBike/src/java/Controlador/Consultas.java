@@ -1,14 +1,14 @@
-package controlador;
+package Controlador;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import modelo.Articulo;
-import modelo.Compra;
-import modelo.ControladorProducto;
-import modelo.Producto;
-import modelo.Usuario;
+import Modelo.Articulo;
+import Modelo.Compra;
+import Modelo.ControladorProducto;
+import Modelo.Producto;
+import Modelo.Usuario;
 
 /**
  *

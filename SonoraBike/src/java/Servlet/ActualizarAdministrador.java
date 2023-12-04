@@ -1,6 +1,6 @@
-package servlet;
+package Servlet;
 
-import controlador.Consultas;
+import Controlador.Consultas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,15 +8,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Usuario;
+import Modelo.Usuario;
 
 /**
  *
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "ActualizarDatosUsuario", urlPatterns = {"/actualizarUsuario"})
-public class ActualizarDatosUsuario extends HttpServlet {
+@WebServlet(name = "ActualizarAdministrador", urlPatterns = {"/actualizarAdministrador"})
+public class ActualizarAdministrador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,25 +36,13 @@ public class ActualizarDatosUsuario extends HttpServlet {
         String nuevaPass = request.getParameter("pass");
         String correo = request.getParameter("correo");
         String nuevoTelefono = request.getParameter("telefono");
-        String nuevaCalle = request.getParameter("calle");
-        String nuevaColonia = request.getParameter("colonia");
-        String nuevaCiudad = request.getParameter("ciudad");
-        String nuevoEstado = request.getParameter("estado");
-        String nuevoPais = request.getParameter("pais");
-        String nuevoCodigo_postal = request.getParameter("codigo_postal");
-        String nuevoNumero_casa = request.getParameter("numero_casa");
 
-        int nuevoCodigoPostal = Integer.parseInt(nuevoCodigo_postal);
         // Obtén más parámetros según sea necesario
-
         // Utiliza la clase Consultas para actualizar la información del usuario
         Consultas sql = new Consultas();
         Usuario usuario = new Usuario(nuevoNombre, nuevaPass, nuevoTelefono);
         usuario.setCorreo(correo);
-        usuario.agregarDireccion(nuevaCalle, nuevaColonia, nuevaCiudad, nuevoEstado, nuevoPais, nuevoCodigoPostal, nuevoNumero_casa);
 
-        System.out.println(nuevaCalle);
-        System.out.println("Si llego aqui");
         if (sql.actualizarUsuario(usuario)) {
             out.println("Éxito");
         } else {

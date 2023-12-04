@@ -1,21 +1,20 @@
-package servlet;
+package Servlet;
 
-import controlador.Consultas;
+import Controlador.Consultas;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Producto;
 
 /**
  *
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "ActualizarProducto", urlPatterns = {"/actualizarProducto"})
-public class ActualizarProducto extends HttpServlet {
+@WebServlet(name = "AgregarProducto", urlPatterns = {"/agregarProducto"})
+public class AgregarProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,7 +29,6 @@ public class ActualizarProducto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String id = request.getParameter("idProducto");
         String nombreProducto = request.getParameter("nombreProducto");
         String img = request.getParameter("img");
         String precio = request.getParameter("precio");
@@ -39,14 +37,7 @@ public class ActualizarProducto extends HttpServlet {
 
         Consultas sql = new Consultas();
 
-        int tam = id.lastIndexOf(id);
-        if (id.charAt(tam) == '.') {
-            String newId = id.substring(0, id.length() - 1);
-            id = newId;
-        }
-        int id_producto = Integer.parseInt(id);
         float price = Float.parseFloat(precio);
-
         int tam2 = stock.lastIndexOf(stock);
         if (stock.charAt(tam2) == '.') {
             String newId = stock.substring(0, stock.length() - 1);
@@ -54,13 +45,11 @@ public class ActualizarProducto extends HttpServlet {
         }
         int cantidad = Integer.parseInt(stock);
 
-        Producto producto = new Producto(id_producto, nombreProducto, img, tipo, price, cantidad);
-
-        if (sql.actualizarProducto(producto)) {
+        if (sql.agregarProducto(nombreProducto, img, price, tipo, cantidad)) {
             // Almacena el mensaje en la sesión
-            request.getSession().setAttribute("mensaje", "Producto actualizado correctamente");
+            request.getSession().setAttribute("mensaje", "Producto registrado correctamente");
         } else {
-            request.getSession().setAttribute("mensaje", "Error al actualizar el producto");
+            request.getSession().setAttribute("mensaje", "Error al registrar el producto");
         }
 
         // Redirige a la misma página para mostrar el mensaje

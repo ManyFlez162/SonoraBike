@@ -1,22 +1,21 @@
-package servlet;
+package Servlet;
 
-import controlador.Consultas;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Usuario;
+import Modelo.Articulo;
 
 /**
  *
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "ActualizarAdministrador", urlPatterns = {"/actualizarAdministrador"})
-public class ActualizarAdministrador extends HttpServlet {
+@WebServlet(name = "EliminarArticulo", urlPatterns = {"/eliminarArticulo"})
+public class EliminarArticulo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,24 +29,21 @@ public class ActualizarAdministrador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        String productId = request.getParameter("productId");
+        int id = Integer.parseInt(productId);
 
-        String nuevoNombre = request.getParameter("nombre");
-        String nuevaPass = request.getParameter("pass");
-        String correo = request.getParameter("correo");
-        String nuevoTelefono = request.getParameter("telefono");
-
-        // Obtén más parámetros según sea necesario
-        // Utiliza la clase Consultas para actualizar la información del usuario
-        Consultas sql = new Consultas();
-        Usuario usuario = new Usuario(nuevoNombre, nuevaPass, nuevoTelefono);
-        usuario.setCorreo(correo);
-
-        if (sql.actualizarUsuario(usuario)) {
-            out.println("Éxito");
-        } else {
-            out.println("Error");
+        ArrayList<Articulo> articulos = (ArrayList<Articulo>) request.getSession().getAttribute("carrito");
+        for (int i = 0; i < articulos.size(); i++) {
+            if (articulos.get(i).getIdProducto() == id) {
+                articulos.remove(i);
+            }
         }
+        request.getSession().removeAttribute("carrito");
+        request.getSession().setAttribute("carrito", articulos);
+
+        // Envía una respuesta JSON con los datos actualizados
+        String jsonResponse = "{ \"status\": \"success\", \"message\": \"Eliminacion exitosa\" }";
+        response.getWriter().write(jsonResponse);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,6 +1,6 @@
-package modelo;
+package Modelo;
 
-import controlador.Conexion;
+import Controlador.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

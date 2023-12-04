@@ -1,19 +1,22 @@
-package servlet;
+package Servlet;
 
+import Controlador.Consultas;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Modelo.Usuario;
 
 /**
  *
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "CerrarSesion", urlPatterns = {"/cerrarSesion"})
-public class CerrarSesion extends HttpServlet {
+@WebServlet(name = "ActualizarDatosUsuario", urlPatterns = {"/actualizarUsuario"})
+public class ActualizarDatosUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -27,8 +30,36 @@ public class CerrarSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getSession().removeAttribute("correo");
-        response.sendRedirect("index.jsp");
+        PrintWriter out = response.getWriter();
+
+        String nuevoNombre = request.getParameter("nombre");
+        String nuevaPass = request.getParameter("pass");
+        String correo = request.getParameter("correo");
+        String nuevoTelefono = request.getParameter("telefono");
+        String nuevaCalle = request.getParameter("calle");
+        String nuevaColonia = request.getParameter("colonia");
+        String nuevaCiudad = request.getParameter("ciudad");
+        String nuevoEstado = request.getParameter("estado");
+        String nuevoPais = request.getParameter("pais");
+        String nuevoCodigo_postal = request.getParameter("codigo_postal");
+        String nuevoNumero_casa = request.getParameter("numero_casa");
+
+        int nuevoCodigoPostal = Integer.parseInt(nuevoCodigo_postal);
+        // Obtén más parámetros según sea necesario
+
+        // Utiliza la clase Consultas para actualizar la información del usuario
+        Consultas sql = new Consultas();
+        Usuario usuario = new Usuario(nuevoNombre, nuevaPass, nuevoTelefono);
+        usuario.setCorreo(correo);
+        usuario.agregarDireccion(nuevaCalle, nuevaColonia, nuevaCiudad, nuevoEstado, nuevoPais, nuevoCodigoPostal, nuevoNumero_casa);
+
+        System.out.println(nuevaCalle);
+        System.out.println("Si llego aqui");
+        if (sql.actualizarUsuario(usuario)) {
+            out.println("Éxito");
+        } else {
+            out.println("Error");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

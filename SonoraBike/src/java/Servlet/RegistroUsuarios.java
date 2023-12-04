@@ -1,21 +1,21 @@
-package servlet;
+package Servlet;
 
+import Controlador.Consultas;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Articulo;
 
 /**
  *
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "EliminarArticulo", urlPatterns = {"/eliminarArticulo"})
-public class EliminarArticulo extends HttpServlet {
+@WebServlet(name = "RegistroUsuarios", urlPatterns = {"/nuevoUsuario"})
+public class RegistroUsuarios extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,21 +29,41 @@ public class EliminarArticulo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String productId = request.getParameter("productId");
-        int id = Integer.parseInt(productId);
+        PrintWriter out = response.getWriter();
 
-        ArrayList<Articulo> articulos = (ArrayList<Articulo>) request.getSession().getAttribute("carrito");
-        for (int i = 0; i < articulos.size(); i++) {
-            if (articulos.get(i).getIdProducto() == id) {
-                articulos.remove(i);
-            }
+        String nombre = request.getParameter("nombre");
+        String clave = request.getParameter("pass");
+        String correo = request.getParameter("correo");
+        String telefono = request.getParameter("telefono");
+        String calle = request.getParameter("calle");
+        String colonia = request.getParameter("colonia");
+        String ciudad = request.getParameter("ciudad");
+        String estado = request.getParameter("estado");
+        String pais = request.getParameter("pais");
+        String codigoP = request.getParameter("codigo_postal");
+        String numeroCasa = request.getParameter("numero_casa");
+        Consultas sql = new Consultas();
+
+        Integer cp = Integer.valueOf(codigoP);
+        int res = sql.registrar(nombre, clave, correo, telefono, calle, colonia, ciudad, estado, pais, cp, numeroCasa);
+
+        switch (res) {
+            case 1:
+                request.getSession().setAttribute("mensajeRegistro", "Registro exitoso");
+                response.sendRedirect("index.jsp");
+                break;
+            case 0:
+                request.getSession().setAttribute("mensajeRegistro", "No se pudo registrar");
+                response.sendRedirect("registro.jsp");
+                break;
+            case -1:
+                request.getSession().setAttribute("mensajeRegistro", "Ya hay un usuario registrado con ese correo");
+                response.sendRedirect("registro.jsp");
+                break;
+            default:
+                break;
         }
-        request.getSession().removeAttribute("carrito");
-        request.getSession().setAttribute("carrito", articulos);
 
-        // Envía una respuesta JSON con los datos actualizados
-        String jsonResponse = "{ \"status\": \"success\", \"message\": \"Eliminacion exitosa\" }";
-        response.getWriter().write(jsonResponse);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

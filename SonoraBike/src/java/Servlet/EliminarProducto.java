@@ -1,8 +1,7 @@
-package servlet;
+package Servlet;
 
-import controlador.Consultas;
+import Controlador.Consultas;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "RegistroUsuarios", urlPatterns = {"/nuevoUsuario"})
-public class RegistroUsuarios extends HttpServlet {
+@WebServlet(name = "EliminarProducto", urlPatterns = {"/eliminarProducto"})
+public class EliminarProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,41 +28,27 @@ public class RegistroUsuarios extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
 
-        String nombre = request.getParameter("nombre");
-        String clave = request.getParameter("pass");
-        String correo = request.getParameter("correo");
-        String telefono = request.getParameter("telefono");
-        String calle = request.getParameter("calle");
-        String colonia = request.getParameter("colonia");
-        String ciudad = request.getParameter("ciudad");
-        String estado = request.getParameter("estado");
-        String pais = request.getParameter("pais");
-        String codigoP = request.getParameter("codigo_postal");
-        String numeroCasa = request.getParameter("numero_casa");
+        String idProducto = request.getParameter("idProducto");
+
+        int tam = idProducto.lastIndexOf(idProducto);
+        if (idProducto.charAt(tam) == '.') {
+            String newId = idProducto.substring(0, idProducto.length() - 1);
+            idProducto = newId;
+        }
+        int id_producto = Integer.parseInt(idProducto);
+
         Consultas sql = new Consultas();
 
-        Integer cp = Integer.valueOf(codigoP);
-        int res = sql.registrar(nombre, clave, correo, telefono, calle, colonia, ciudad, estado, pais, cp, numeroCasa);
-
-        switch (res) {
-            case 1:
-                request.getSession().setAttribute("mensajeRegistro", "Registro exitoso");
-                response.sendRedirect("index.jsp");
-                break;
-            case 0:
-                request.getSession().setAttribute("mensajeRegistro", "No se pudo registrar");
-                response.sendRedirect("registro.jsp");
-                break;
-            case -1:
-                request.getSession().setAttribute("mensajeRegistro", "Ya hay un usuario registrado con ese correo");
-                response.sendRedirect("registro.jsp");
-                break;
-            default:
-                break;
+        if (sql.eliminarProducto(id_producto)) {
+            // Almacena el mensaje en la sesión
+            request.getSession().setAttribute("mensaje", "Producto eliminado correctamente");
+        } else {
+            request.getSession().setAttribute("mensaje", "Error al eliminar el producto");
         }
 
+        // Redirige a la misma página para mostrar el mensaje
+        response.sendRedirect("administracion.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

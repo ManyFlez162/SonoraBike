@@ -1,22 +1,21 @@
-package servlet;
+package Servlet;
 
+import Controlador.Consultas;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Articulo;
-import modelo.ControladorProducto;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "ActualizarCantidad", urlPatterns = {"/actualizarCantidad"})
-public class ActualizarCantidad extends HttpServlet {
+@WebServlet(name = "InicioSesion", urlPatterns = {"/iniciarSesion"})
+public class InicioSesion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,30 +29,30 @@ public class ActualizarCantidad extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String productId = request.getParameter("productId");
-        String newQuantity = request.getParameter("newQuantity");
-        int id = Integer.parseInt(productId);
-        int cantidad = Integer.parseInt(newQuantity);
+        String correo = request.getParameter("correo");
+        String clave = request.getParameter("pass");
 
-        ArrayList<Articulo> articulos = (ArrayList<Articulo>) request.getSession().getAttribute("carrito");
-        for (int i = 0; i < articulos.size(); i++) {
-            if (articulos.get(i).getIdProducto() == id) {
-                ControladorProducto cp = new ControladorProducto();
-                int stock = cp.getProducto(id).getStock();
-                if (cantidad <= stock) {
-                    articulos.get(i).setCantidad(cantidad);
-                }
-                if (cantidad == 0) {
-                    articulos.remove(i);
-                }
+        Consultas sql = new Consultas();
+
+        int res = sql.autenticacion(correo, clave);
+        switch (res) {
+            case 1: {
+                HttpSession objSesion = request.getSession(true);
+                objSesion.setAttribute("correo", correo);
+                response.sendRedirect("index2.jsp");
+                break;
             }
+            case 2: {
+                HttpSession objSesion = request.getSession(true);
+                objSesion.setAttribute("correo", correo);
+                response.sendRedirect("administracion.jsp");
+                break;
+            }
+            default:
+                response.sendRedirect("index.jsp");
+                break;
         }
-        request.getSession().removeAttribute("carrito");
-        request.getSession().setAttribute("carrito", articulos);
 
-        // Envía una respuesta JSON con los datos actualizados
-        String jsonResponse = "{ \"status\": \"success\", \"message\": \"Actualización exitosa\", \"newQuantity\": " + cantidad + " }";
-        response.getWriter().write(jsonResponse);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,20 +1,21 @@
-package servlet;
+package Servlet;
 
-import controlador.Consultas;
+import Controlador.Consultas;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Modelo.Producto;
 
 /**
  *
  * @author Brandon Figueroa Ugalde - 00000233295
  * @author Manuel Francisco Flores Velazquez - 00000233301
  */
-@WebServlet(name = "EliminarUsuario", urlPatterns = {"/eliminarUsuario"})
-public class EliminarUsuario extends HttpServlet {
+@WebServlet(name = "ActualizarProducto", urlPatterns = {"/actualizarProducto"})
+public class ActualizarProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,21 +30,37 @@ public class EliminarUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String idUsuario = request.getParameter("idUsuario");
-        int tam = idUsuario.lastIndexOf(idUsuario);
-        if (idUsuario.charAt(tam) == '.') {
-            String newId = idUsuario.substring(0, idUsuario.length() - 1);
-            idUsuario = newId;
-        }
-        int id_usuario = Integer.parseInt(idUsuario);
+        String id = request.getParameter("idProducto");
+        String nombreProducto = request.getParameter("nombreProducto");
+        String img = request.getParameter("img");
+        String precio = request.getParameter("precio");
+        String tipo = request.getParameter("tipo");
+        String stock = request.getParameter("stock");
 
         Consultas sql = new Consultas();
 
-        if (sql.eliminarUsuario(id_usuario)) {
+        int tam = id.lastIndexOf(id);
+        if (id.charAt(tam) == '.') {
+            String newId = id.substring(0, id.length() - 1);
+            id = newId;
+        }
+        int id_producto = Integer.parseInt(id);
+        float price = Float.parseFloat(precio);
+
+        int tam2 = stock.lastIndexOf(stock);
+        if (stock.charAt(tam2) == '.') {
+            String newId = stock.substring(0, stock.length() - 1);
+            stock = newId;
+        }
+        int cantidad = Integer.parseInt(stock);
+
+        Producto producto = new Producto(id_producto, nombreProducto, img, tipo, price, cantidad);
+
+        if (sql.actualizarProducto(producto)) {
             // Almacena el mensaje en la sesión
-            request.getSession().setAttribute("mensaje", "Usuario eliminado correctamente");
+            request.getSession().setAttribute("mensaje", "Producto actualizado correctamente");
         } else {
-            request.getSession().setAttribute("mensaje", "Error al eliminar el usuario");
+            request.getSession().setAttribute("mensaje", "Error al actualizar el producto");
         }
 
         // Redirige a la misma página para mostrar el mensaje

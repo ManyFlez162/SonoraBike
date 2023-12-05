@@ -102,6 +102,7 @@
                                                 <span class="input-group-text"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                                 <input type="email" class="form-control" placeholder="Ingresa tu email" id="correo" name="correo" required>
                                             </div>
+                                            <br>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
                                                 <input type="password" class="form-control" placeholder="Ingresa tu contraseña" id="pass" name="pass" required>

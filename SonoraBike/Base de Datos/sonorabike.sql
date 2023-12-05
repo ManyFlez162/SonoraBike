@@ -73,7 +73,7 @@ CREATE TABLE `usuarios` (
 -- --------------------------------------------------------
 -- Insercion de datos para la tabla `direccion`
 INSERT INTO `direccion` (`id_direccion`, `calle`, `colonia`, `ciudad`, `estado`, `pais`, `codigo_postal`, `numero_casa`, `id_usuario`) VALUES
-(1, 'Palmas', 'La Joya', 'Obregon', 'Sonora', 'Mexico', 85033, '101', 1);
+(1, 'Palmas', 'Bonita', 'Obregon', 'Sonora', 'Mexico', 85033, '101', 3);
 -- --------------------------------------------------------
 
 -- --------------------------------------------------------
@@ -82,10 +82,10 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `img_producto`, `precio`, `tip
 (1, 'Bicicleta de Ruta Scott Addict RC 15', 'assets/images/img1.jpg', 12000, 'Ruta', 100),
 (2, 'Bicicleta de Ruta Scott 960', 'assets/images/img2.jpg', 16000, 'Ruta', 100),
 (3, 'Bicicleta de Montaña Scott Ransom 910', 'assets/images/img3.jpg', 15000, 'Montana', 100),
-(4, 'Jersey Solar', 'assets/images/img4.jpg', 750, 'Accesorios', 150),
-(5, 'Combo Luces', 'assets/images/img5.jpg', 900, 'Accesorios', 50),
-(6, 'Casco Negro Supra', 'assets/images/img6.jpg', 1200, 'Accesorios', 100),
-(7, 'Chain Lube', 'assets/images/img7.jpg', 1200, 'Accesorios', 300);
+(4, 'Jersey Solar', 'assets/images/img4.jpg', 750, 'Accesorio', 150),
+(5, 'Combo Luces', 'assets/images/img5.jpg', 900, 'Accesorio', 50),
+(6, 'Casco Negro Supra', 'assets/images/img6.jpg', 1200, 'Accesorio', 100),
+(7, 'Chain Lube', 'assets/images/img7.jpg', 1200, 'Accesorio', 300);
 -- --------------------------------------------------------
 
 -- --------------------------------------------------------

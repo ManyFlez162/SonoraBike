@@ -79,8 +79,7 @@
                                     <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="informacion_usuario.jsp"">Ver
-                                    información del usuario</a>
+                                <a class="nav-link" href="informacion_usuario.jsp"">Información</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="carrito.jsp"">Carrito</a>

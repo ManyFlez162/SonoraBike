@@ -31,7 +31,8 @@ public class Conexion {
         }
     }
     
-    public Connection getConexion(){
+    public Connection getConexion() throws SQLException{
+        con=DriverManager.getConnection(URL,USERNAME,PASSWORD);  
         return con;
     }
     

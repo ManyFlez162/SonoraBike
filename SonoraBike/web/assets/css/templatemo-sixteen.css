@@ -1075,7 +1075,8 @@ footer .inner-content p a {
 
 /* Estilo para el botón "Cerrar" en el formulario */
 .modal-footer button {
-    background-color: #6a6a6a;
+    background-color: #000;
+    border: #6a6a6a;
     color: #fff;
 }
 

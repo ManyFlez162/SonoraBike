@@ -32,7 +32,7 @@
               rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
         <script src="assets/js/botones.js" type="text/javascript"></script>
-        <title>Sonora Bike - Información Usuario</title>
+        <title>Sonora Bike - Información</title>
 
         <!-- Bootstrap core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@
                             <a class="nav-link" href="#" onclick="openEliminarUsuarioForm()">Eliminar Usuario</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="informacion_administrador.jsp"">Ver Información</a>
+                            <a class="nav-link" href="informacion_administrador.jsp"">Información</a>
                             <span class="sr-only">(current)</span>
                         </li>
                         <li class=" nav-item">
@@ -90,30 +90,34 @@
                                             <span class="input-group-text"><i class="fas fa-font"></i></span>
                                             <input type="text" class="form-control" placeholder="Ingrese el nombre del producto" id="nombreProducto" name="nombreProducto" required>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-image"></i></span>
                                             <input type="text" class="form-control" placeholder="Ingrese la ruta de la imagen" id="img" name="img" required>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
                                             <input type="text" class="form-control" placeholder="Ingrese el precio" id="precio" name="precio" oninput="validarPrecio(this)" required>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-tags"></i></span>
                                             <select class="form-select" id="tipo" name="tipo" required>
                                                 <option value="" disabled selected>Selecciona el tipo</option>
-                                                <option value="Sticker">Sticker</option>
-                                                <option value="Pin">Pin</option>
-                                                <option value="Libreta">Libreta</option>
+                                                <option value="Montana">Bicicleta de Montaña</option>
+                                                <option value="Ruta">Bicicletas de Ruta</option>
+                                                <option value="Accesorio">Accesorios</option>
                                                 <!-- Agrega más opciones según sea necesario -->
                                             </select>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-list-ol"></i></span>
                                             <input type="text" class="form-control" placeholder="Ingrese el stock" id="stock" name="stock" oninput="validarNumero(this)" required>
                                         </div>
-                                        <button type="submit" class="modalIniciar"><i class="fa fa-user-circle"
-                                                                                      aria-hidden="true"></i>Agregar Producto</button>
+                                        <br>
+                                        <button type="submit" class="modalIniciar">Agregar Producto</button>
                                     </form>
                                     <br>
                                     <!-- Modal footer -->
@@ -139,34 +143,38 @@
                                             <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
                                             <input type="number" class="form-control" placeholder="Ingrese el id del producto" id="idProducto" name="idProducto" oninput="validarNumero(this)" required>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-font"></i></span>
                                             <input type="text" class="form-control" placeholder="Ingrese el nombre del producto" id="nombreProducto" name="nombreProducto" required>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-image"></i></span>
                                             <input type="text" class="form-control" placeholder="Ingrese la ruta de la imagen" id="img" name="img" required>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
                                             <input type="number" class="form-control" placeholder="Ingrese el precio" id="precio" name="precio" oninput="validarPrecio(this)" required>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-tags"></i></span>
                                             <select class="form-select" id="tipo" name="tipo" required>
                                                 <option value="" disabled selected>Selecciona el tipo</option>
-                                                <option value="Sticker">Sticker</option>
-                                                <option value="Pin">Pin</option>
-                                                <option value="Libreta">Libreta</option>
-                                                <!-- Agrega más opciones según sea necesario -->
+                                                <option value="Montana">Bicicleta de Montaña</option>
+                                                <option value="Ruta">Bicicleta de Ruta</option>
+                                                <option value="Accesorio">Accesorio</option>
                                             </select>
                                         </div>
+                                        <br>
                                         <div class="input-group">
                                             <span class="input-group-text"><i class="fas fa-list-ol"></i></span>
                                             <input type="number" class="form-control" placeholder="Ingrese el stock" id="stock" name="stock" oninput="validarNumero(this)" required>
                                         </div>
-                                        <button type="submit"  class="modalIniciar"><i class="fa fa-user-circle"
-                                                                                       aria-hidden="true"></i>Actualizar Producto</button>
+                                        <br>
+                                        <button type="submit"  class="modalIniciar"></i>Actualizar Producto</button>
                                     </form>
                                     <br>
                                     <!-- Modal footer -->
@@ -192,8 +200,8 @@
                                             <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
                                             <input type="number" class="form-control" placeholder="Ingrese el id del producto" id="idProducto" name="idProducto" oninput="validarNumero(this)" required>
                                         </div>
-                                        <button type="submit" class="modalIniciar"><i class="fa fa-user-circle"
-                                                                                      aria-hidden="true"></i>Eliminar Producto</button>
+                                        <br>
+                                        <button type="submit" class="modalIniciar">Eliminar Producto</button>
                                     </form>
                                     <br>
                                     <!-- Modal footer -->
@@ -219,8 +227,8 @@
                                             <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
                                             <input type="number" class="form-control" placeholder="Ingrese el id del usuario" id="idProducto" name="idUsuario" oninput="validarNumero(this)" required>
                                         </div>
-                                        <button type="submit" class="modalIniciar"><i class="fa fa-user-circle"
-                                                                                      aria-hidden="true"></i>Eliminar Usuario</button>
+                                        <br>
+                                        <button type="submit" class="modalIniciar">Eliminar Usuario</button>
                                     </form>
                                     <br>
                                     <!-- Modal footer -->
@@ -249,25 +257,30 @@
         <br>
         <br>
         <div class="col-md-6 offset-md-3">
-            <h1>Información del Usuario</h1>
+            <h1>Información</h1>
             <br>
             <form id="adminForm">
-                <label for="email">Nombre de usuario:</label>
+                <label for="email">Nombre de administrador:</label>
                 <input type="text" id="nombre" name="nombre" value=<%= usuario.getNombre()%> disabled>
                 <button type="button" id="editarNombre" onclick="editarCampo('nombre')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                <br>
                 <br>
                 <label for="password">Contraseña:</label>
                 <input type="password" id="pass" nombre="pass" value=<%= usuario.getPass()%> disabled>
                 <button type="button" id="editarPassword" onclick="editarCampo('pass')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
+                <br>
                 <label for="email">Correo electrónico:</label>
                 <input type="text" id="correo" name="correo" value=<%= usuario.getCorreo()%> disabled>
+                <br>
                 <br>
                 <label for="phone">Teléfono:</label>
                 <input type="text" id="telefono" name="telefono" value=<%= usuario.getTelefono()%> disabled>
                 <button type="button" id="editarTelefono" onclick="editarCampo('telefono')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
+                <br>
                 <button type="button" id="guardar" onclick="guardarCambiosAdministrador()">Guardar</button>
+                <br>
                 <br>
                 <button type="button" id="restaurar" onclick="restaurarCambiosAdministrador()">Restaurar</button>
             </form>

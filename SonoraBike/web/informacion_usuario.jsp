@@ -33,7 +33,7 @@
               rel="stylesheet">
 
         <script src="assets/js/botones.js" type="text/javascript"></script>
-        <title>SonoraBike - Información Usuario</title>
+        <title>SonoraBike - Información</title>
 
         <!-- Bootstrap core CSS -->
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -69,8 +69,7 @@
                             <a class="nav-link" href="contact2.jsp">Contáctanos</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="informacion_usuario.jsp"">Ver
-                                información del usuario
+                            <a class="nav-link" href="informacion_usuario.jsp"">Información
                                 <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
@@ -100,53 +99,65 @@
         <br>
         <br>
         <div class="col-md-6 offset-md-3">
-            <h1>Información del Usuario</h1>
+            <h1>Información</h1>
             <br>
             <form id="userForm">
                 <label for="email">Nombre de usuario:</label>
                 <input type="text" id="nombre" name="nombre" value=<%= usuario.getNombre()%> disabled>
                 <button type="button" id="editarNombre" onclick="editarCampo('nombre')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
+                <br>
                 <label for="password">Contraseña:</label>
                 <input type="password" id="pass" nombre="pass" value=<%= usuario.getPass()%> disabled>
                 <button type="button" id="editarPassword" onclick="editarCampo('pass')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
+                <br>
                 <label for="email">Correo electrónico:</label>
                 <input type="text" id="correo" name="correo" value=<%= usuario.getCorreo()%> disabled>
+                <br>
                 <br>
                 <label for="phone">Teléfono:</label>
                 <input type="text" id="telefono" name="telefono" value=<%= usuario.getTelefono()%> disabled>
                 <button type="button" id="editarTelefono" onclick="editarCampo('telefono')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
-                <label for="street">Dirección - Calle:</label>
+                <br>
+                <label for="street">Calle:</label>
                 <input type="text" id="calle" name="calle" value=<%= usuario.getCalle()%> disabled>
                 <button type="button" id="editarCalle" onclick="editarCampo('calle')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
-                <label for="colonia">Dirección - Colonia:</label>
+                <br>
+                <label for="colonia">Colonia:</label>
                 <input type="text" id="colonia" name="colonia" value=<%= usuario.getColonia()%> disabled>
                 <button type="button" id="editarColonia" onclick="editarCampo('colonia')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
-                <label for="city">Dirección - Ciudad:</label>
+                <br>
+                <label for="city">Ciudad:</label>
                 <input type="text" id="ciudad" name="ciudad" value=<%= usuario.getCiudad()%> disabled>
                 <button type="button" id="editarCiudad" onclick="editarCampo('ciudad')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
-                <label for="state">Dirección - Estado:</label>
+                <br>
+                <label for="state">Estado:</label>
                 <input type="text" id="estado" name="estado" value=<%= usuario.getEstado()%> disabled>
                 <button type="button" id="editarEstado" onclick="editarCampo('estado')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
-                <label for="country">Dirección - País:</label>
+                <br>
+                <label for="country">País:</label>
                 <input type="text" id="pais" name="pais" value=<%= usuario.getPais()%> disabled>
                 <button type="button" id="editarPais" onclick="editarCampo('pais')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
-                <label for="postal">Dirección - Código Postal:</label>
+                <br>
+                <label for="postal">Código Postal:</label>
                 <input type="text" id="codigo_postal" name="codigo_postal" value=<%= usuario.getCodigo_postal()%> disabled>
                 <button type="button" id="editarPostal" onclick="editarCampo('codigo_postal')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
-                <label for="postal">Dirección - Número de casa:</label>
+                <br>
+                <label for="postal">Número de casa:</label>
                 <input type="text" id="numero_casa" name="numero_casa" value=<%= usuario.getNumero_casa()%> disabled>
                 <button type="button" id="editNumero" onclick="editarCampo('numero_casa')"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 <br>
+                <br>
                 <button type="button" id="guardar" onclick="guardarCambios()">Guardar</button>
+                <br>
                 <br>
                 <button type="button" id="restaurar" onclick="restaurarCambios()">Restaurar</button>
             </form>

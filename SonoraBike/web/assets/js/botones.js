@@ -127,10 +127,10 @@ function guardarCambios() {
     }
 
     var contraseña = formulario.pass.value.trim();
-    var contraseñaRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z]\w{5,14}$/;
+    var contraseñaRegex = /^.{6,}$/;
 
     if (!contraseñaRegex.test(contraseña)) {
-        alert("La contraseña debe tener al menos 6 caracteres, incluir al menos una letra mayúscula, una letra minúscula, un número, y el primer carácter debe ser una letra.");
+        alert("La contraseña debe tener al menos 6 caracteres.");
         formulario.pass.classList.add("invalid-input");
         return false;
     } else {
@@ -311,10 +311,10 @@ function guardarCambiosAdministrador() {
     }
 
     var contraseña = formulario.pass.value.trim();
-    var contraseñaRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z]\w{5,14}$/;
+    var contraseñaRegex = /^.{6,}$/;
 
     if (!contraseñaRegex.test(contraseña)) {
-        alert("La contraseña debe tener al menos 6 caracteres, incluir al menos una letra mayúscula, una letra minúscula, un número, y el primer carácter debe ser una letra.");
+        alert("La contraseña debe tener al menos 6 caracteres.");
         formulario.pass.classList.add("invalid-input");
         return false;
     } else {
@@ -399,10 +399,10 @@ function validarFormulario() {
     }
 
     var contraseña = formulario.pass.value.trim();
-    var contraseñaRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z]\w{5,14}$/;
+    var contraseñaRegex = /^.{6,}$/;
 
     if (!contraseñaRegex.test(contraseña)) {
-        alert("La contraseña debe tener al menos 6 caracteres, incluir al menos una letra mayúscula, una letra minúscula, un número, y el primer carácter debe ser una letra.");
+        alert("La contraseña debe tener al menos 6 caracteres.");
         formulario.pass.classList.add("invalid-input");
         return false;
     } else {
